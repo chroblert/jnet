@@ -1,4 +1,4 @@
-module jnet
+module github.com/chroblert/jnet
 
 go 1.21.3
 
