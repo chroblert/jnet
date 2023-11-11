@@ -57,6 +57,7 @@ func resolve(domain string) {
 	}
 }
 
+// 获取解析A记录中的cname值和最终的ip
 func ResolveA(server string, domain string, clientIP string) (domain_path []string, dest_ip []string, err error) {
 	// queryType
 	var qtype uint16
@@ -116,6 +117,17 @@ func ResolveA(server string, domain string, clientIP string) (domain_path []stri
 	return
 }
 
+// 将解析路径，转换成一对一的关系
+// 如：domain1 -cname->domain2,domain2-cname->domain3, domain3-a->ip1,ip2
+//
+//	map[string]string{
+//	 "domain1": "domain2",
+//	 "domain2": "domain3"
+//	}
+//
+//	map[string]string{
+//	 "domain3": []string{"ip1","ip2"},
+//	}
 func GetDomainMap(domain string, domain_path []string, dest_ips []string) (domain_cname_map map[string]string, domain_a_map map[string][]string) {
 	//var domain_cname_map map[string]string
 	//var domain_a_map map[string][]string
