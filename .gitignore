@@ -1,0 +1,7 @@
+*.log
+logs
+*.exe
+*.xlsx
+*.txt
+*.xml
+*.iml
